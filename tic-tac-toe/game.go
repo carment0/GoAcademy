@@ -28,9 +28,10 @@ func NewGame(p1 Player, p2 Player) *Game {
 
 func (g *Game) printInfo() {
   // Using the package strconv, we can us .Itoa to return the result of ParseInt(s, 10, 0) converted to type int.
+	fmt.Println("--------------------------------")
   fmt.Println("Turn #" + strconv.Itoa(g.TurnNum))
   fmt.Println(g.Board)
-  fmt.Println("Currnet player:", g.CurrentPlayer.Name())
+  fmt.Println("Current player:", g.CurrentPlayer.Name())
 }
 
 func (g *Game) Start() {

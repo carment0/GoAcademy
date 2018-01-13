@@ -128,3 +128,22 @@ func (b *Board) diagonals() [2][3]string {
   }
   return diagonals
 }
+
+
+
+// _______________________Bonus______________________________
+func (b *Board) emptySpaces() [][2]int {
+  emptySpaces := [][2]int{}
+  for i := range b.Grid {
+    for j := range b.Grid {
+      if b.Grid[i][j] == "_" {
+        emptySpaces = append(emptySpaces, [2]int{i, j})
+      }
+    }
+  }
+  return emptySpaces
+}
+
+func (b Board) Copy() *Board {
+	return &b
+}
