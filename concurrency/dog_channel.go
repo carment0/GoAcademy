@@ -24,7 +24,7 @@ func AgeTheDog(in chan *Dog, out chan *Dog) {
 
 // main fn is the primary thread
 func main() {
-  // create channels
+  // create channels for the two thread to commuicate with each other
   inTunnel := make(chan *Dog)
   outTunnel := make(chan *Dog)
 
