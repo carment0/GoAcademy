@@ -37,8 +37,8 @@ func HandleAdd(w http.ResponseWriter, r *http.Request) {
   }
 }
 
-// Since the handler functions are mostly the same for each calculation handler, we are going to create a Higher Order Function (a fn returning a fn)!
-// the expected output is a http.HandleFunca
+// Since the handler functions are mostly the same for each calculation handler, we are going to create a Higher Order Function (a fn returning a fn)! 
+// the expected output is a http.HandleFunc
 func OperationHandlerCreator(opType string) http.HandlerFunc {
   return func(w http.ResponseWriter, r *http.Request) {
     leftOp, leftErr := strconv.ParseFloat(r.URL.Query().Get("lop"), 64)
