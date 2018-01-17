@@ -1,6 +1,6 @@
 package main
 
-inport (
+import (
   "fmt"
   "net/http"
 )
