@@ -10,6 +10,7 @@ func main() {
 	// FileServer will serve all the files in the public folder as a file server
 	fs := http.FileServer(http.Dir("public"))
 
+  // create a broker
 	b := &Broker{
 		ConnMap:   make(map[*websocket.Conn]bool),
 		Broadcast: make(chan Payload),
@@ -30,3 +31,9 @@ func main() {
 		fmt.Println("ListenAndServe: ", err)
 	}
 }
+
+
+Questions?
+line 22 what does Handle do? fs?
+line 17 explain websocket.Upgrader{}
+why need two threads?

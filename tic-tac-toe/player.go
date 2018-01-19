@@ -4,7 +4,7 @@ import "fmt"
 
 // we are using interface bc we will have different type of players
 // we want it to be generic discription for a list of struct
-// any struct that has a the same functions listed under the Player interfere is a type of Player
+// any struct that has a the same functions listed under the Player interface is a type of Player
 type Player interface {
   // what are the fn all you player can do?
   GetMove(b *Board) (int, int, error)

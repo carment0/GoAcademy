@@ -47,6 +47,7 @@ func (b *Broker) handleBroadcast() {
 // create a controller, a high level fn which returns a fn
 func (b *Broker) getHandleConnections() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+    // lets check if we can upgrade the GET!
 		conn, err := b.Upgrader.Upgrade(w, r, nil)
 		if err != nil {
 			fmt.Println("Failed to upgrade GET to a websocket connection")
@@ -54,8 +55,9 @@ func (b *Broker) getHandleConnections() http.HandlerFunc {
 		// defer = excute this fn when the handler fn is done
 		defer conn.Close()
 
-		// we want to store the connection
+		// we want to store the connection if there was no GET error
 		b.ConnMap[conn] = true
+    // lets check if the payload is correct!
 		for {
 			// constantly listen for Messages
 			var p Payload
@@ -77,3 +79,12 @@ func (b *Broker) getHandleConnections() http.HandlerFunc {
 		}
 	}
 }
+
+Questions?
+what does ConnMap, Broadcast look like?
+line 37 what does conn.WriteJSON(payload) mean?
+line 40 does closing the connection end the go thread?
+line 50 what does b.Upgrader.Upgrade(w, r, nil) mean?
+line 55 what does defer conn.Close() mean?
+line 62 what does conn.ReadJSON(&p) mean? IsUnexpectedCloseError?
+b.Broadcast <- p?
