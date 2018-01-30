@@ -20,6 +20,13 @@ func main() {
   // this is a blocking call (forever loop), so we need to add a new thread!
   go b.handleBroadcast()
 
+  // Think of two functions, one is `FeedAnimal` and another one is `FeedCat`... `FeedAnimal` expects inputs to be ANYTHING that qualifies to be an animal. `FeedCat` expects inputs to be CAT ONLY CAT.
+	// `Handle()` is equivalent to `FeedAnimal`
+	// `HandleFunc()` is equivalent to `FeedCat`
+	// The reason why `Handle` was used, because `FileServer` is something that qualifies to be a `Handler`
+	// It's like when do you use FeedAnimal vs FeedCat... Let's say I am only given two choices... and I am trying to feed Loki
+	// Obviously FeedCat won't work
+	// The only option I have left is FeedAnimal
 	http.Handle("/", fs)
 	// HandleFunc will call when the user hit the endpoint, there will be a new HandleFunc in the getHandleConnections fn.
 	// But there is only one broker. Which means only one Broadcast channel.

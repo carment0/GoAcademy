@@ -1,6 +1,6 @@
 package main
 
-// Go’s structs are typed collections of fields. They’re useful for grouping data together to form records. Object like???
+// Go’s structs are typed collections of fields. They’re useful for grouping data together to form records.
 type Board struct {
   // We are creating a array called Grid: [n]T
   // n = number of elements to storage
