@@ -1,9 +1,8 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Print("Let's play Connect Four! \n")
-	b := NewBoard()
-	fmt.Println(b)
+	p1 := &HumanPlayer{"Momo", "X"}
+	p2 := &HumanPlayer{"Donut", "O"}
+	g := NewGame(p1, p2)
+	g.Start()
 }
