@@ -14,6 +14,7 @@ func main() {
 	b := &Broker{
 		ConnMap:   make(map[*websocket.Conn]bool),
 		Broadcast: make(chan Payload),
+    // Upgrade upgrades the HTTP server connection to the WebSocket protocol.
 		Upgrader:  &websocket.Upgrader{},
 	}
 
@@ -41,6 +42,5 @@ func main() {
 
 
 Questions?
-line 22 what does Handle do? fs?
-line 17 explain websocket.Upgrader{}
+line 18 explain websocket.Upgrader{}
 why need two threads?
