@@ -9,11 +9,12 @@ import (
 const Addr = ":3000"
 
 func main() {
+	// logrus: printing library, print with color in terminal and saves logs
 	logrus.SetFormatter(&logrus.TextFormatter{
 		FullTimestamp: true,
 	})
 
-	_, err := SetupDatabase()
+	db, err := SetupDatabase()
 
 	if err != nil {
 		logrus.Error(err)
@@ -21,10 +22,11 @@ func main() {
 	}
 
 	// create server with http package
+	// we are using a server struct, allow more configuring
 	server := &http.Server{
-		Addr: Addr,
-		Handler: LoadRoutes(),
-		// the thread the writes or read the handle will terminate if over 15 sec
+		Addr:    Addr,
+		Handler: LoadRoutes(db), // attach routes to server
+		// the thread the writes or read the handle, will terminate after 15 sec
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}

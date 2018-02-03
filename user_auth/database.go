@@ -1,10 +1,13 @@
 package main
 
 import (
+	// go orm
 	"github.com/jinzhu/gorm"
-	_"github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"go-academy/user_auth/model"
 )
 
+// returns db connection and error
 func SetupDatabase() (*gorm.DB, error) {
 	db, err := gorm.Open(
 		"postgres",
@@ -15,8 +18,8 @@ func SetupDatabase() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// creating table for all your models
-	//db.AutoMigrate()
+	// migrates creating table for all your models
+	db.AutoMigrate(&model.User{}, &model.Message{})
 
 	return db, nil
 }
