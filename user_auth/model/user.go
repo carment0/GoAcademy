@@ -11,7 +11,7 @@ type User struct {
 	Name           string    `gorm:"type:varchar(100)"`
 	Email          string    `gorm:"type:varchar(100);unique_index"`
 	SessionToken   string    `gorm:"type:varchar(100);unique_index"`
-	PasswordDigest []byte    `gorm:"type:bytea"` // byte array
+	PasswordDigest []byte    `gorm:"type:bytea"`        // byte array
 	Messages       []Message `gorm:"ForeignKey:UserID"` // example of has_many
 }
 
